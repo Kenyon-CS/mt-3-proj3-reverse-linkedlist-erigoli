@@ -14,8 +14,18 @@ void LinkedList::push_front(int v) {
     head_ = new Node(v, head_);
 }
 void LinkedList::reverse() {
-    // TODO: implement
+    Node* prev = nullptr;
+    Node* curr = head_;
+    Node* next = nullptr;
+    while (curr) {
+        next = curr->next;
+        curr->next = prev;
+        prev = curr;
+        curr = next;
+    }
+    head_ = prev;
 }
+
 std::string LinkedList::to_string() const {
     std::ostringstream oss;
     oss << "[";
